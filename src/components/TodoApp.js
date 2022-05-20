@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./todoapp.css";
 
-const TodoApp=()=> {
+const TodoApp = () => {
   const [task, setTask] = useState("");
   const [tasklist, setTaskList] = useState([]);
 
@@ -16,7 +16,7 @@ const TodoApp=()=> {
 
       setTaskList([...tasklist, taskDetails]);
       // saving the previous tasklist,and also the array of objects when the task is not empty
-      setTask('')
+      setTask("");
     }
   };
 
@@ -65,7 +65,7 @@ const TodoApp=()=> {
       {/* if array.length != 0 then the elements will be mapped,else they will not be mapped */}
       {tasklist.length ? (
         <ul>
-          {tasklist.map((tasks,index) => (
+          {tasklist.map((tasks, index) => (
             <li key={index} className={tasks.isCompleted ? "crossText" : null}>
               {tasks.value}
               <button
@@ -75,7 +75,10 @@ const TodoApp=()=> {
                 Completed
               </button>
 
-              <button className="delete" onClick={(e) => deleteTask(e, tasks.id)}>
+              <button
+                className="delete"
+                onClick={(e) => deleteTask(e, tasks.id)}
+              >
                 Remove
               </button>
             </li>
@@ -84,6 +87,6 @@ const TodoApp=()=> {
       ) : null}
     </div>
   );
-}
+};
 
 export default TodoApp;
