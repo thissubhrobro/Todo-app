@@ -25,7 +25,7 @@ const TodoApp = () => {
     setTaskList(taskList.filter((t) => t.id !== id));
     // so here the ids that are not same will be filtered
 
-    // the id that is same will be removed
+    // the ids' that are same will be removed
   };
 
   const completeTask = (e, id) => {
