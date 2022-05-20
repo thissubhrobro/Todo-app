@@ -3,7 +3,7 @@ import "./todoapp.css";
 
 const TodoApp = () => {
   const [task, setTask] = useState("");
-  const [tasklist, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState([]);
 
   const AddTask = () => {
     // console.log(task)
@@ -14,15 +14,15 @@ const TodoApp = () => {
         isCompleted: false,
       };
 
-      setTaskList([...tasklist, taskDetails]);
-      // saving the previous tasklist,and also the array of objects when the task is not empty
+      setTaskList([...taskList, taskDetails]);
+      // saving the previous taskList,and also the array of objects when the task is not empty
       setTask("");
     }
   };
 
   const deleteTask = (e, id) => {
     // e.preventDefault();
-    setTaskList(tasklist.filter((t) => t.id !== id));
+    setTaskList(taskList.filter((t) => t.id !== id));
     // so here the ids that are not same will be filtered
 
     // the id that is same will be removed
@@ -31,13 +31,13 @@ const TodoApp = () => {
   const completeTask = (e, id) => {
     e.preventDefault();
     // find index of element
-    const element = tasklist.findIndex((elem) => elem.id === id);
+    const element = taskList.findIndex((elem) => elem.id === id);
 
     //copy array into new variable to be used specifically as to which id containing array to be specifically changed
 
-    const newTaskList = [...tasklist];
+    const newTaskList = [...taskList];
 
-    //edit  element and changing a specific property of the specific id containing tasklist
+    //edit  element and changing a specific property of the specific id containing taskList
 
     newTaskList[element] = {
       ...newTaskList[element],
@@ -61,11 +61,11 @@ const TodoApp = () => {
         Add
       </button>
       <br />
-      {/* when tasklist!==[] and it has multiple values then the value inside the tasks will be mapped */}
-      {/* if array.length != 0 then the elements will be mapped,else they will not be mapped */}
-      {tasklist.length ? (
+      {/* when taskList!==[] and it has multiple values then the value inside the tasks will be mapped */}
+      {/* if array.length !== 0 then the elements will be mapped,else they will not be mapped */}
+      {taskList.length ? (
         <ul>
-          {tasklist.map((tasks, index) => (
+          {taskList.map((tasks, index) => (
             <li key={index} className={tasks.isCompleted ? "crossText" : null}>
               {tasks.value}
               <button
